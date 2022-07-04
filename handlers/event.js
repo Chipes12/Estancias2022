@@ -6,7 +6,6 @@ module.exports = (client, reload, bot) => {
 		if (jsfiles.length <= 0) return console.log("There are no events to load");
 		if (!reload) console.log(`Loading ${jsfiles.length} events...`);
 		jsfiles.forEach((f, i) => {
-			// if ((f == "logs.js" || f == "smartwarnings.js") && reload) return; //never reloads logs events
 			if (reload) delete require.cache[require.resolve(`../events/${f}`)];
 			let pull = require(`../events/${f}`);
 			client.events.set(pull.name, pull);
@@ -15,12 +14,8 @@ module.exports = (client, reload, bot) => {
 	});
 	if (!reload) initEvents(client, bot);
 };
-//IF YOU WISH TO HANDLE MORE EVENTS, BE SURE TO ADD THEM IN initEvents(client, bot)
-//adding anything here would require a full bot restart!!
-//examples for channelCreate/Delete, GuildCreate/Delete are shown
-//if you need to add other events, copy the formatting and use this cheatsheet for reference
-// https://gist.github.com/koad/316b265a91d933fd1b62dddfcc3ff584
 
+//Eventos bot
 function initEvents(client, bot) {
 	client.on("messageCreate", (message) => {
 		if (!message.guild) return;

@@ -1,11 +1,13 @@
 const Discord = require("discord.js");
+
 const client = new Discord.Client({ 
     disableMentions: "everyone",
     intents: [
         "GUILDS",
         "GUILD_MESSAGES",
         "GUILD_MEMBERS",
-        "GUILD_PRESENCES"
+        "GUILD_PRESENCES",
+        "GUILD_VOICE_STATES"
     ]
 }); 
 const config = require("./config.js");

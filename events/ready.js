@@ -1,3 +1,8 @@
+const dotenv = require("dotenv");
+dotenv.config()
+
+const guildId = process.env.GUILD_ID;
+
 module.exports = {
 	name: "ready",
 	func: runAll,
@@ -5,7 +10,7 @@ module.exports = {
 function runAll(bot) {
 	login(bot);
 }
-function login(bot){
+async function login(bot){
     const {client} = bot;
     console.log(`   Bot ${client.user.tag} iniciado correctamente! `);
 }
